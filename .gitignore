@@ -34,6 +34,9 @@ Thumbs.db
 # Environment files
 .env
 
+# Secret config files
+redis.conf
+
 # Test coverage files
 *.cover
 coverage.out
