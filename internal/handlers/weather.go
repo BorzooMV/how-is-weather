@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/BorzooMV/how-is-weather/internal/services"
 )
@@ -48,7 +49,7 @@ func GetWeather(w http.ResponseWriter, r *http.Request, city string) {
 			return
 		}
 
-		_, err = redisClient.Set(ctx, city, data, 0).Result()
+		_, err = redisClient.Set(ctx, city, data, 15*time.Minute).Result()
 		if err != nil {
 			fmt.Printf("Failed to cache the data:\n%v\n", err.Error())
 		}
